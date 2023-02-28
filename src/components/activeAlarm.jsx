@@ -27,14 +27,14 @@ export default function ActiveAlarm(props) {
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             <Box>
-            {props.alarmTime}
+              {props.alarmTime}
             </Box>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button id = {props.label+'active-alarm-snooze'} onClick={props.onSnooze}>Snooze</Button>
-          <Button id = {props.label+"active-alarm-close"} onClick={props.onClose}>Dismiss</Button>
-          <Button id = {props.label+"active-alarm-delete"} onClick={props.onDelete}>Delete</Button>
+          <Button id={props.label + 'active-alarm-snooze'} onClick={props.onSnooze}>Snooze</Button>
+          <Button id={props.label + "active-alarm-close"} onClick={props.onClose}>Dismiss</Button>
+          <Button id={props.label + "active-alarm-delete"} onClick={props.onDelete}>Delete</Button>
         </DialogActions>
       </Dialog>
     </>
