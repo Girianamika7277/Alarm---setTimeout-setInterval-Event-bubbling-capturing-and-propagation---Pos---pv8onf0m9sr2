@@ -1,3 +1,5 @@
+
+
 import React from 'react'
 import '../styles/App.css';
 import AlarmContainer from './alarmContainer';
@@ -6,21 +8,21 @@ const App = () => {
 
   const defaultAlarms = [
     {
-        label: "Interview at abc", 
-        alarmTime: "08:30"
+      label: "Interview at abc",
+      alarmTime: "08:30"
     },
     {
-        label: "Interview at xyz", 
-        alarmTime: "19:30"
+      label: "Interview at xyz",
+      alarmTime: "19:30"
     },
     {
-        label: "Interview at pqr", 
-        alarmTime: "20:45"
+      label: "Interview at pqr",
+      alarmTime: "20:45"
     },
   ]
 
   const timeCheck = i => {
-    return (i<10) ? '0'+i : i;
+    return (i < 10) ? '0' + i : i;
   }
 
   // console.log(new Date().toLocaleTimeString('en-US', {hour12: false}))
@@ -29,14 +31,14 @@ const App = () => {
 
   const [open, setOpen] = React.useState(false)
   const date1 = new Date()
-  const [currentTime, setCurrentTime] = React.useState(timeCheck(date1.getHours())+":"+timeCheck(date1.getMinutes()))
+  const [currentTime, setCurrentTime] = React.useState(timeCheck(date1.getHours()) + ":" + timeCheck(date1.getMinutes()))
 
   const updateTime = () => {
     const date = new Date()
-    setCurrentTime(timeCheck(date.getHours())+":"+timeCheck(date.getMinutes()))
+    setCurrentTime(timeCheck(date.getHours()) + ":" + timeCheck(date.getMinutes()))
     console.log(currentTime)
   }
-  React.useEffect(()=> {
+  React.useEffect(() => {
     updateTime()
   }, [])
 
@@ -51,7 +53,7 @@ const App = () => {
 
   const handleSave = (label, alarmTime) => {
     const alarmsCopy = [...alarms]
-    alarmsCopy.push({label, alarmTime})
+    alarmsCopy.push({ label, alarmTime })
     setAlarms(alarmsCopy)
     handleClose()
   }
@@ -71,7 +73,7 @@ const App = () => {
 
   const handleSnooze = index => {
     const alarmsCopy = [...alarms]
-    const date = new Date(Date.now() + 10*60*1000)
+    const date = new Date(Date.now() + 10 * 60 * 1000)
     alarmsCopy[index].alarmTime = timeCheck(date.getHours()) + ':' + timeCheck(date.getMinutes())
     console.log(alarmsCopy[index])
     setAlarms(alarmsCopy)
@@ -79,8 +81,8 @@ const App = () => {
 
   return (
     <div id="main">
-      <AlarmContainer onOpen={handleClickOpen} alarms={alarms} onDelete={handleDelete} onEdit={handleEdit} time={currentTime} onSnooze={handleSnooze}/>
-      <AlarmForm open={open} onOpen={handleClickOpen} onClose={handleClose} onSave={handleSave}/>
+      <AlarmContainer onOpen={handleClickOpen} alarms={alarms} onDelete={handleDelete} onEdit={handleEdit} time={currentTime} onSnooze={handleSnooze} />
+      <AlarmForm open={open} onOpen={handleClickOpen} onClose={handleClose} onSave={handleSave} />
     </div>
   )
 }
